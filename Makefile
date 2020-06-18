@@ -1,8 +1,9 @@
 mc.o: mc.c
 	gcc -c mc.c
+	mv mc.o build/
 
 mc: mc.o 
-	gcc mc.o -o mc
+	gcc build/mc.o -o mc
 
 run: mc
-	./mc
+	./mc -p hello.c 
