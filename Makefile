@@ -5,5 +5,8 @@ mc.o: mc.c
 mc: mc.o 
 	gcc build/mc.o -o mc
 
+install: mc 
+	cp mc /usr/local/bin
+
 run: mc
 	./mc -p hello.c 
