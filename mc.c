@@ -14,14 +14,21 @@ int main(int argc, char** argv) {
         perror("file opening failed");
         return EXIT_FAILURE;
     }
+    
+    // program needs arguments
+    if (argc == 1) {
+        perror("not enough arguments");
+        return EXIT_FAILURE;
+    } else {
+        const char* program = get_program(argc, argv);
+        const char* build_dir = "./bd"; // temp name because of conflict
 
-    const char* program = get_program(argc, argv);
-    const char* build_dir = "./bd"; // temp name because of conflict
+        make_obj_file(makefile, program, build_dir);
+        make_program(makefile, program, build_dir);
 
-    make_obj_file(makefile, program, build_dir);
-    make_program(makefile, program, build_dir);
+        create_build_dir(build_dir);
+    } 
 
-    create_build_dir(build_dir);
     return 0;
 }
 
