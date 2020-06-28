@@ -1,4 +1,7 @@
-mc.o: mc.c
+build:
+	mkdir build/
+
+mc.o: mc.c build
 	gcc -c mc.c
 	mv mc.o build/
 
